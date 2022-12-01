@@ -40,6 +40,8 @@ export class Address1669926081043 implements MigrationInterface {
                     {
                         name: 'complement',
                         type: 'varchar',
+                        isNullable: true,
+                        default: null,
                     },
                     {
                         name: 'user_id',
