@@ -12,7 +12,6 @@ interface IRequestBody {
 
 interface IResponseBody {
     access_token: string
-    refresh_token: string
     user: Pick<UserModel, 'email' | 'id' | 'name'>
 }
 

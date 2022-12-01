@@ -13,4 +13,14 @@ export class UserModel {
 
     @Column()
     password: string
+
+    @Column({
+        name: 'individual_number',
+    })
+    individualNumber: string
+
+    @Column({
+        name: 'worker_number',
+    })
+    workerNumber: string
 }

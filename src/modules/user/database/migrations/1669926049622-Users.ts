@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
-export class Todo1669630284577 implements MigrationInterface {
+export class User1669926049622 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'todos',
+                name: 'users',
                 columns: [
                     {
                         name: 'id',
@@ -14,30 +14,24 @@ export class Todo1669630284577 implements MigrationInterface {
                         generationStrategy: 'increment',
                     },
                     {
-                        name: 'description',
+                        name: 'name',
                         type: 'varchar',
                     },
                     {
-                        name: 'createdAt',
-                        type: 'datetime',
-                        default: 'CURRENT_TIMESTAMP',
+                        name: 'email',
+                        type: 'varchar',
                     },
                     {
-                        name: 'startedAt',
-                        type: 'datetime',
-                        isNullable: true,
-                        default: null,
+                        name: 'password',
+                        type: 'varchar',
                     },
                     {
-                        name: 'workTime',
-                        type: 'int',
-                        isNullable: true,
-                        default: null,
+                        name: 'individual_number',
+                        type: 'varchar',
                     },
                     {
-                        name: 'done',
-                        type: 'boolean',
-                        default: false,
+                        name: 'worker_number',
+                        type: 'varchar',
                     },
                 ],
             })
@@ -45,6 +39,6 @@ export class Todo1669630284577 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('todos')
+        await queryRunner.dropTable('users')
     }
 }

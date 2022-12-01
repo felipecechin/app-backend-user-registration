@@ -2,7 +2,7 @@ import _ from 'lodash'
 import bcrypt from 'bcrypt'
 
 import AuthValidations from '@/modules/user/validations/AuthValidations'
-import generateJwtAndRefreshToken from '@/modules/user/utils/generateJwtAndRefreshToken'
+import generateJwt from '@/modules/user/utils/generateJwt'
 import HttpError from '@/shared/utils/HttpError'
 import UserRepository from '@/modules/user/repositories/UserRepository'
 import validateSchema from '@/shared/utils/validateSchema'
@@ -11,7 +11,6 @@ import { UserModel } from '../../database/models/UserModel'
 
 interface ILoginReturn {
     access_token: string
-    refresh_token: string
     user: Pick<UserModel, 'email' | 'name' | 'id'>
 }
 
@@ -36,11 +35,10 @@ export default async function login(data: IParams): Promise<ILoginReturn> {
     }
 
     const userWithoutPassword = _.omit(userExists, 'password')
-    const tokens = await generateJwtAndRefreshToken(userWithoutPassword.id, userWithoutPassword)
+    const tokens = await generateJwt(userWithoutPassword.id, userWithoutPassword)
 
     return {
         access_token: tokens.accessToken,
-        refresh_token: tokens.refreshToken,
         user: userWithoutPassword,
     }
 }
