@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+
+import { AddressModel } from './AddressModel'
 
 @Entity('users')
 export class UserModel {
@@ -23,4 +25,7 @@ export class UserModel {
         name: 'worker_number',
     })
     workerNumber: string
+
+    @OneToOne(() => AddressModel, (address) => address.user, { cascade: true })
+    address: AddressModel
 }

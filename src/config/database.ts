@@ -3,8 +3,7 @@ import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 
 import env from '@/env'
-
-import { UserModel } from '../modules/user/database/models/UserModel'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 
 export const AppDataSource = new DataSource({
     type: 'mysql',

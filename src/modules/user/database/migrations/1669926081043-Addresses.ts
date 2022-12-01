@@ -30,7 +30,7 @@ export class Address1669926081043 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'address',
+                        name: 'street',
                         type: 'varchar',
                     },
                     {
