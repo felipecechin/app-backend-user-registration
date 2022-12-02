@@ -1,8 +1,7 @@
 import _ from 'lodash'
 
+import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserRepository from '@/modules/user/repositories/UserRepository'
-
-import { UserModel } from '../../database/models/UserModel'
 
 interface IParams {
     userId: number

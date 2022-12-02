@@ -1,6 +1,6 @@
-import { dataRepositories } from '../../../../config/database'
-import HttpError from '../../../../shared/utils/HttpError'
-import { UserModel } from '../../database/models/UserModel'
+import { dataRepositories } from '@/config/database'
+import HttpError from '@/shared/utils/HttpError'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 
 interface IData {
     email: string

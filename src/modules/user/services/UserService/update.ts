@@ -1,8 +1,7 @@
+import { ICreateUser } from '@/modules/user/types/createUser'
 import UserRepository from '@/modules/user/repositories/UserRepository'
+import UserValidations from '@/modules/user/validations/UserValidations'
 import validateSchema from '@/shared/utils/validateSchema'
-
-import { ICreateUser } from '../../types/createUser'
-import UserValidations from '../../validations/UserValidations'
 
 type TParams = ICreateUser & { id: number }
 

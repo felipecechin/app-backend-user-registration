@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from 'express'
 
+import { ICreateUser } from '@/modules/user/types/createUser'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserService from '@/modules/user/services/UserService'
-
-import { ICreateUser } from '../../types/createUser'
-import { UserModel } from '../../database/models/UserModel'
 
 type TRequestBody = ICreateUser
 

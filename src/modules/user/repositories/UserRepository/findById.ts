@@ -1,6 +1,6 @@
-import { dataRepositories } from '../../../../config/database'
-import HttpError from '../../../../shared/utils/HttpError'
-import { UserModel } from '../../database/models/UserModel'
+import { dataRepositories } from '@/config/database'
+import HttpError from '@/shared/utils/HttpError'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 
 export default async (id: number, withAddress = true): Promise<UserModel> => {
     const params: Record<string, string[] | object> = {

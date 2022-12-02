@@ -1,4 +1,4 @@
-import UserRepository from '../../repositories/UserRepository'
+import UserRepository from '@/modules/user/repositories/UserRepository'
 
 interface IParams {
     userId: number

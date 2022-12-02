@@ -2,12 +2,11 @@ import _ from 'lodash'
 import bcrypt from 'bcrypt'
 
 import HttpError from '@/shared/utils/HttpError'
+import { ICreateUser } from '@/modules/user/types/createUser'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserRepository from '@/modules/user/repositories/UserRepository'
+import UserValidations from '@/modules/user/validations/UserValidations'
 import validateSchema from '@/shared/utils/validateSchema'
-
-import { ICreateUser } from '../../types/createUser'
-import { UserModel } from '../../database/models/UserModel'
-import UserValidations from '../../validations/UserValidations'
 
 export default async (data: ICreateUser): Promise<Pick<UserModel, 'email' | 'id' | 'name'>> => {
     const validatedData = await validateSchema(UserValidations.register, data)

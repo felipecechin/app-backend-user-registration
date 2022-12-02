@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 
+import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserService from '@/modules/user/services/UserService'
-
-import { UserModel } from '../../database/models/UserModel'
 
 interface IResponseBody {
     profile: Omit<UserModel, 'password'>
