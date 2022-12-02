@@ -8,7 +8,7 @@ export interface ICreateUser {
     address: {
         street: string
         number: number
-        complement: string
+        complement: string | null
         city: string
         state: string
         country: string
