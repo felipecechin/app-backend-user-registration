@@ -8,7 +8,7 @@ import UserRepository from '@/modules/user/repositories/UserRepository'
 import UserValidations from '@/modules/user/validations/UserValidations'
 import validateSchema from '@/shared/utils/validateSchema'
 
-export default async (data: ICreateUser): Promise<Pick<UserModel, 'email' | 'id' | 'name'>> => {
+export default async (data: ICreateUser): Promise<Omit<UserModel, 'password'>> => {
     const validatedData = await validateSchema(UserValidations.register, data)
 
     const userExists = await UserRepository.findByEmail(validatedData.email)

@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express'
 import UserService from '@/modules/user/services/UserService'
 
 interface IResponseBody {
-    removed: boolean
+    removed: number
 }
 
 export default async (
@@ -12,7 +12,7 @@ export default async (
     next: NextFunction
 ): Promise<Response<IResponseBody>> => {
     const userId = Number(req.user?.id)
-    await UserService.remove({ userId })
+    const success = await UserService.remove({ userId })
 
-    return res.status(200).send({ removed: true })
+    return res.status(200).send({ removed: success })
 }

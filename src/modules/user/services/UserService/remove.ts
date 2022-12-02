@@ -4,6 +4,7 @@ interface IParams {
     userId: number
 }
 
-export default async ({ userId }: IParams): Promise<void> => {
-    await UserRepository.removeById(userId)
+export default async ({ userId }: IParams): Promise<number> => {
+    const removed = await UserRepository.removeById(userId)
+    return removed
 }

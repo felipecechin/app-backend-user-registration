@@ -2,12 +2,13 @@
 import { NextFunction, Request, Response } from 'express'
 
 import { ICreateUser } from '@/modules/user/types/createUser'
+import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserService from '@/modules/user/services/UserService'
 
 type TRequestBody = ICreateUser
 
 interface IResponseBody {
-    updated: boolean
+    updated: Omit<UserModel, 'password'>
 }
 
 export default async (
@@ -16,7 +17,7 @@ export default async (
     next: NextFunction
 ): Promise<Response<IResponseBody>> => {
     const userId = Number(req.user?.id)
-    await UserService.update({ id: userId, ...req.body })
+    const updatedUser = await UserService.update({ id: userId, ...req.body })
 
-    return res.status(200).send({ updated: true })
+    return res.status(200).send({ updated: updatedUser })
 }

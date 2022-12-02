@@ -8,7 +8,7 @@ import UserService from '@/modules/user/services/UserService'
 type TRequestBody = ICreateUser
 
 interface IResponseBody {
-    newUser: Pick<UserModel, 'email' | 'id' | 'name'>
+    newUser: Omit<UserModel, 'password'>
 }
 
 export default async (

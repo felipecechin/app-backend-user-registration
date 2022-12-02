@@ -23,8 +23,8 @@ interface IData {
 
 export default async (data: IData): Promise<UserModel> => {
     try {
-        const createdUser = await dataRepositories.userRepository.save(data)
-        return createdUser
+        const updatedUser = await dataRepositories.userRepository.save(data)
+        return updatedUser
     } catch (error) {
         throw new HttpError(500, 'Error updating user')
     }
