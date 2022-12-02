@@ -3,21 +3,17 @@ import { NextFunction, Request, Response } from 'express'
 
 import UserService from '@/modules/user/services/UserService'
 
+import { ICreateUser } from '../../types/createUser'
 import { UserModel } from '../../database/models/UserModel'
 
-interface IRequestBody {
-    name: string
-    email: string
-    password: string
-    confirmPassword: string
-}
+type TRequestBody = ICreateUser
 
 interface IResponseBody {
     newUser: Pick<UserModel, 'email' | 'id' | 'name'>
 }
 
 export default async (
-    req: Request<any, any, IRequestBody>,
+    req: Request<any, any, TRequestBody>,
     res: Response<IResponseBody>,
     next: NextFunction
 ): Promise<Response<IResponseBody>> => {
