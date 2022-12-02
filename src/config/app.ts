@@ -10,20 +10,20 @@ import { createConnection, dataRepositories } from './database'
 createConnection()
     .then(async () => {
         // const savedUser = await dataRepositories.userRepository.save({
-        //     email: 'feafea',
-        //     name: 'feafae',
-        //     password: 'feafae',
-        //     individualNumber: 'feafae',
-        //     workerNumber: 'feafae',
-        //     address: {
-        //         street: 'feafae',
-        //         number: 4,
-        //         complement: 'feafae',
-        //         city: 'feafae',
-        //         state: 'feafae',
-        //         country: 'feafae',
-        //         zip: 'feafae',
-        //     },
+        // email: 'feafea',
+        // name: 'feafae',
+        // password: 'feafae',
+        // individualNumber: 'feafae',
+        // workerNumber: 'feafae',
+        // address: {
+        //     street: 'feafae',
+        //     number: 4,
+        //     complement: 'feafae',
+        //     city: 'feafae',
+        //     state: 'feafae',
+        //     country: 'feafae',
+        //     zip: 'feafae',
+        // },
         // })
         // console.log({ savedUser })
         // console.log('procurar')

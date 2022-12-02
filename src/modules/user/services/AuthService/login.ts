@@ -7,11 +7,8 @@ import HttpError from '@/shared/utils/HttpError'
 import UserRepository from '@/modules/user/repositories/UserRepository'
 import validateSchema from '@/shared/utils/validateSchema'
 
-import { UserModel } from '../../database/models/UserModel'
-
 interface ILoginReturn {
     access_token: string
-    user: Pick<UserModel, 'email' | 'name' | 'id'>
 }
 
 interface IParams {
@@ -39,6 +36,5 @@ export default async function login(data: IParams): Promise<ILoginReturn> {
 
     return {
         access_token: tokens.accessToken,
-        user: userWithoutPassword,
     }
 }

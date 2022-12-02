@@ -1,9 +1,25 @@
 import { dataRepositories } from '../../../../config/database'
 import HttpError from '../../../../shared/utils/HttpError'
-import { ICreateUser } from '../../types/createUser'
 import { UserModel } from '../../database/models/UserModel'
 
-export default async (data: ICreateUser): Promise<UserModel> => {
+interface IData {
+    email: string
+    password: string
+    name: string
+    individualNumber: string
+    workerNumber: string
+    address: {
+        street: string
+        number: number
+        complement: string
+        city: string
+        state: string
+        country: string
+        zip: string
+    }
+}
+
+export default async (data: IData): Promise<UserModel> => {
     try {
         const createdUser = await dataRepositories.userRepository.save(data)
         return createdUser

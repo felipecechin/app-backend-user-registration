@@ -24,7 +24,10 @@ export default async (data: ICreateUser): Promise<Pick<UserModel, 'email' | 'id'
         throw new HttpError(400, 'Password and confirm password do not match')
     }
 
-    const createdUser = await UserRepository.create(validatedData)
+    const user = _.omit(validatedData, ['confirmPassword'])
+    user.password = passwordHash
+
+    const createdUser = await UserRepository.create(user)
 
     return _.omit(createdUser, 'password')
 }

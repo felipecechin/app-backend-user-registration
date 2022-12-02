@@ -3,8 +3,6 @@ import { NextFunction, Request, Response } from 'express'
 
 import AuthService from '@/modules/user/services/AuthService'
 
-import { UserModel } from '../../database/models/UserModel'
-
 interface IRequestBody {
     email: string
     password: string
@@ -12,7 +10,6 @@ interface IRequestBody {
 
 interface IResponseBody {
     access_token: string
-    user: Pick<UserModel, 'email' | 'id' | 'name'>
 }
 
 export default async (

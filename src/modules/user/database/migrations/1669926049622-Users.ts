@@ -20,6 +20,7 @@ export class User1669926049622 implements MigrationInterface {
                     {
                         name: 'email',
                         type: 'varchar',
+                        isUnique: true,
                     },
                     {
                         name: 'password',
@@ -28,10 +29,12 @@ export class User1669926049622 implements MigrationInterface {
                     {
                         name: 'individual_number',
                         type: 'varchar',
+                        isUnique: true,
                     },
                     {
                         name: 'worker_number',
                         type: 'varchar',
+                        isUnique: true,
                     },
                 ],
             })

@@ -1,17 +1,5 @@
 import joi from '@/libs/joi'
 
-// individualNumber: string
-//     workerNumber: string
-//     address: {
-//         street: string
-//         number: number
-//         complement: string
-//         city: string
-//         state: string
-//         country: string
-//         zip: string
-//     }
-
 export default joi.object({
     name: joi.string().required(),
     email: joi.string().required(),
@@ -21,7 +9,7 @@ export default joi.object({
     individualNumber: joi.string().required(),
     address: joi.object({
         street: joi.string().required(),
-        number: joi.string().required(),
+        number: joi.number().required(),
         complement: joi.string().optional(),
         city: joi.string().required(),
         state: joi.string().required(),
