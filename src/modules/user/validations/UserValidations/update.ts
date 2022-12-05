@@ -9,7 +9,7 @@ export default joi.object({
     address: joi.object({
         street: joi.string().required(),
         number: joi.number().required(),
-        complement: joi.string().optional(),
+        complement: joi.string().optional().default(null),
         city: joi.string().required(),
         state: joi.string().required(),
         country: joi.string().required(),
