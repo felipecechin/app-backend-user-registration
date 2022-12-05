@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from 'express'
 
-import { ICreateUser } from '@/modules/user/types/createUser'
+import { IUpdateUser } from '@/modules/user/types/updateUser'
 import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserService from '@/modules/user/services/UserService'
 
-type TRequestBody = ICreateUser
+type TRequestBody = IUpdateUser
 
 interface IResponseBody {
     updated: Omit<UserModel, 'password'>
