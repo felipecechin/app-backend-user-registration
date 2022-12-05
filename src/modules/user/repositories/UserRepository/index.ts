@@ -1,6 +1,7 @@
 import create from './create'
 import findByEmail from './findByEmail'
 import findById from './findById'
+import findByUniqueFieldsAndNotId from './findByUniqueFieldsAndNotId'
 import removeById from './removeById'
 import update from './update'
 
@@ -10,6 +11,7 @@ const UserRepository = {
     findById,
     update,
     removeById,
+    findByUniqueFieldsAndNotId,
 }
 
 export default UserRepository
