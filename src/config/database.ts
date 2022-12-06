@@ -4,7 +4,6 @@ import { DataSource } from 'typeorm'
 
 import env from '@/env'
 import { UserModel } from '@/modules/user/database/models/UserModel'
-console.log(env.mySqlConnection)
 
 export const AppDataSource = new DataSource({
     type: 'mysql',
