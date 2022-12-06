@@ -9,7 +9,7 @@
         "build": "yarn clean && tsc && yarn copy-files",
         "start:dev": "ts-node-dev -r dotenv/config -r tsconfig-paths/register src/server.ts",
         "start:production": "yarn build && node -r ./dist/tsconfig-paths-bootstrap.js dist/src/server.js",
-        "test": "NODE_ENV=test ts-mocha -r dotenv/config --paths src/**/*.spec.ts --exit",
+        "test": "cross-env NODE_ENV=test ts-mocha -r dotenv/config --paths src/**/*.spec.ts --exit",
         "typeorm": "ts-node-dev -r dotenv/config -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
         "beautify": "prettier --write ."
     },
@@ -40,6 +40,7 @@
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "chai": "^4.3.7",
         "copyfiles": "^2.4.1",
+        "cross-env": "^7.0.3",
         "eslint": "^8.0.1",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-standard-with-typescript": "^23.0.0",

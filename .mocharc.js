@@ -1,3 +1,3 @@
 module.exports = {
-    file: ['./src/test/pretest.ts']
+    file: ['./test/pretest.ts']
 }
