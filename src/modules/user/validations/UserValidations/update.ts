@@ -3,7 +3,7 @@ import joi from '@/libs/joi'
 export default joi.object({
     id: joi.number().required(),
     name: joi.string().required(),
-    email: joi.string().required(),
+    email: joi.string().email().required(),
     workerNumber: joi.string().required(),
     individualNumber: joi.string().required(),
     address: joi.object({
