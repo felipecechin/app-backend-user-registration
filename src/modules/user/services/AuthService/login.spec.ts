@@ -1,22 +1,29 @@
-import { assert } from 'chai'
+import { expect } from 'chai'
 
-import { createConnection } from '@/config/database'
+import HttpError from '@/shared/utils/HttpError'
 
 import login from './login'
 
 describe('modules/user/services/AuthService/login', () => {
-    before(async () => {
-        const connection = await createConnection()
-        await connection.runMigrations()
-        console.log('Connected to database and ran migrations')
-    })
-
-    it('should return 5 when 2 is added to 3', async () => {
-        const result = await login({
-            email: 'fefea',
-            password: 'fefea',
-        })
-
-        console.log(result)
+    it('shoud validate if send an invalid email', async () => {
+        try {
+            await login({
+                email: 'fake-email',
+                password: 'fake-password',
+            })
+            expect.fail()
+        } catch (error) {
+            expect((error as HttpError).toJson()).to.deep.equal({
+                message: 'ValidationError',
+                status: 400,
+                context: [
+                    {
+                        message: '"email" must be a valid email',
+                        path: ['email'],
+                        type: 'string.email',
+                    },
+                ],
+            })
+        }
     })
 })
