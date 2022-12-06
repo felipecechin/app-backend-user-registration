@@ -1,6 +1,9 @@
 import _ from 'lodash'
 import bcrypt from 'bcrypt'
 
+import checkEmailAlreadyInUse from '@/modules/user/utils/checkEmailAlreadyInUse'
+import checkIndividualNumberAlreadyInUse from '@/modules/user/utils/checkIndividualNumberAlreadyInUse'
+import checkWorkerNumberAlreadyInUse from '@/modules/user/utils/checkWorkerNumberAlreadyInUse'
 import HttpError from '@/shared/utils/HttpError'
 import { ICreateUser } from '@/modules/user/types/createUser'
 import { UserModel } from '@/modules/user/database/models/UserModel'
@@ -11,11 +14,9 @@ import validateSchema from '@/shared/utils/validateSchema'
 export default async (data: ICreateUser): Promise<Omit<UserModel, 'password'>> => {
     const validatedData = await validateSchema(UserValidations.register, data)
 
-    const userExists = await UserRepository.findByEmail(validatedData.email)
-
-    if (userExists) {
-        throw new HttpError(400, 'User already exists')
-    }
+    await checkEmailAlreadyInUse(validatedData.email)
+    await checkIndividualNumberAlreadyInUse(validatedData.individualNumber)
+    await checkWorkerNumberAlreadyInUse(validatedData.workerNumber)
 
     const salt = bcrypt.genSaltSync()
     const passwordHash = bcrypt.hashSync(validatedData.password, salt)

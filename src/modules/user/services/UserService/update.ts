@@ -1,6 +1,8 @@
 import _ from 'lodash'
 
-import HttpError from '@/shared/utils/HttpError'
+import checkEmailAlreadyInUse from '@/modules/user/utils/checkEmailAlreadyInUse'
+import checkIndividualNumberAlreadyInUse from '@/modules/user/utils/checkIndividualNumberAlreadyInUse'
+import checkWorkerNumberAlreadyInUse from '@/modules/user/utils/checkWorkerNumberAlreadyInUse'
 import { IUpdateUser } from '@/modules/user/types/updateUser'
 import { UserModel } from '@/modules/user/database/models/UserModel'
 import UserRepository from '@/modules/user/repositories/UserRepository'
@@ -14,15 +16,16 @@ export default async (data: TParams): Promise<Omit<UserModel, 'password'>> => {
 
     const user = await UserRepository.findById(validatedData.id)
 
-    const userHasUniqueValues = await UserRepository.findByUniqueFieldsAndNotId(
-        validatedData.id,
-        validatedData.email,
-        validatedData.individualNumber,
-        validatedData.workerNumber
-    )
+    if (user.email !== validatedData.email) {
+        await checkEmailAlreadyInUse(validatedData.email)
+    }
 
-    if (userHasUniqueValues !== null) {
-        throw new HttpError(400, 'User already exists')
+    if (user.individualNumber !== validatedData.individualNumber) {
+        await checkIndividualNumberAlreadyInUse(validatedData.individualNumber)
+    }
+
+    if (user.workerNumber !== validatedData.workerNumber) {
+        await checkWorkerNumberAlreadyInUse(validatedData.workerNumber)
     }
 
     const newAddress = { ...user.address, ...validatedData.address }
