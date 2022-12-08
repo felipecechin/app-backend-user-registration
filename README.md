@@ -1,20 +1,16 @@
-## Repositório modelo
-Este repositório serve como template para criação de aplicações back-end utilizando as seguintes tecnologias:
-- Node + Express;
+## Aplicação Cadastro de Usuário (Back-end)
+
+A aplicação back-end foi construída utilizando as seguintes tecnologias:
+- Node;
+- Express;
 - Typescript;
-- TypeORM com MySQL.
+- TypeORM.
 
-O repositório já inclui:
-- ESLint e regras;
-- Prettier;
-- Ambiente dev e ambiente de produção;
-- Dois módulos de exemplo:
-    - Todo (pasta `src/modules/todo`): CRUD de tarefas;
-    - User (pasta `src/modules/user`): Autenticação, registro e busca de usuários.
-        - Inclui autenticação JWT e middleware para proteção de rotas (pasta `src/shared/middlewares/ensureAuthenticated.ts`);
-        - Inclui rota para realizar RefreshToken.
+Foi utilizado o banco de dados MySQL como forma de armazenamento dos dados.
 
-### Pontos a serem melhorados:
-- [ ] Adicionar testes unitários;
-- [ ] Adicionar testes de integração;
-- [ ] Adicionar Swagger;
+### Para rodar a aplicação:
+
+Depois de clonar o repositório e com o Node v16+, NPM e Yarn corretamente instalados, faça os seguintes passos:
+
+1. Criar `.env` de acordo com o arquivo `.env.example` e definir a `SECRET_KEY` e os parâmetros de conexão com MySQL.
+2. Executar comando `yarn` para instalar dependências;
