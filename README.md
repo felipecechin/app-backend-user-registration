@@ -6,7 +6,9 @@ A aplicação back-end foi construída utilizando as seguintes tecnologias:
 - Typescript;
 - TypeORM.
 
-Foi utilizado o banco de dados MySQL como forma de armazenamento dos dados. Versão do MySQL utilizada: 5.7.36
+Foi utilizado o banco de dados MySQL como forma de armazenamento dos dados. Versão do MySQL utilizada: 5.7.36.
+
+A aplicação front-end está disponível no link: https://github.com/felipecechin/app-frontend-user-registration.
 
 ### Para rodar a aplicação:
 
